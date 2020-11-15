@@ -1,0 +1,31 @@
+.pokemon{
+    text-align: center;
+    border: 1px solid black;
+    width: auto;
+    height: 50px;
+}
+
+.name{
+    text-transform: capitalize;
+    font-weight: bold;
+    line-height: 50px;
+}
+
+.empty{
+    line-height: 50px;
+    font-size: 20px;
+}
+
+.pokemonSprite{
+    float: left;
+}
+
+.delete{
+    color: red;
+    cursor: pointer;
+    font-size: 10px;
+    float: right;
+}
+.clickable{
+  cursor: pointer;
+}

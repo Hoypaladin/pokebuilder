@@ -1,0 +1,79 @@
+.pokemon{
+    border: 1px solid black;
+    width: auto;
+    padding: 5px;
+}
+.name{
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.move{
+    cursor: pointer;
+
+}
+
+.selectedMove{
+    cursor: pointer;
+    border: 1px solid black;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+
+.moveLeft{
+    padding-right: 0;
+}
+
+.moveRight{
+    padding-left: 0;
+}
+
+.noMove{
+    font-size: 2rem;
+}
+
+.moveset{
+    overflow-y: scroll;
+    max-height: 500px;
+}
+
+.moveName{
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.description{
+    font-size: 0.8rem
+}
+
+p{
+    margin-bottom: 0.4rem;
+}
+
+.smallType{
+    font-size: 0.7rem;
+}
+
+button{
+    margin-top: 1rem;
+}
+
+button.move{
+    margin-top: 0;
+}
+
+.error{
+    color: red;
+    font-size: 0.7rem;
+}
+
+button.goHome{
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.selected{
+  border: 2px solid blue;
+}

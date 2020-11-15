@@ -1,0 +1,150 @@
+
+<div class="container">
+    <h2>My team</h2>
+    <div class="row">
+        <div class="col-4">
+            <div class="row no-gutters">
+                <div class="col">
+                    <app-team [team]="team" [editable]="true"
+                    (selectPokemonEvent)="selectPokemon($event)"></app-team>
+                      <button class="btn btn-primary goHome" routerLink="/home">Save team and go back home</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2>Add new Pokemon</h2>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <form>
+                        <label class="col-form-label">Search by name: </label>
+                            <input [(ngModel)]="searchName" [class.is-invalid]="error" class="form-control" [ngModelOptions]="{standalone: true}">
+                            <div class="invalid-feedback">
+                              {{error}}
+                            </div>
+                        <button class="btn btn-primary" (click)="find()">Find</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="pokemon" *ngIf="chosenPokemon">
+                <div class="row align-items-center">
+                    <div class="col name">
+                        {{chosenPokemon.name}}
+                    </div>
+                    <div class="col">
+                        <img src={{chosenPokemon.image}}>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                         Type: {{formatName(chosenPokemon.type[0])}} <span *ngIf="chosenPokemon.type[1]">, {{formatName(chosenPokemon.type[1])}}</span>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        HP: {{chosenPokemon.hp}}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Attack: {{chosenPokemon.attack}}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                         Defense: {{chosenPokemon.defense}}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Special Attack: {{chosenPokemon.spAtk}}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        Special Defense: {{chosenPokemon.spDef}}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                         Speed: {{chosenPokemon.speed}}
+                    </div>
+                </div>
+                Moves:
+                <div class="row">
+                    <div class="col moveLeft">
+                        <div class="selectedMove"
+                        (click)="chooseMoveIndex(0)"
+                        [class.selected]="selectedMoveIndex == 0">
+                            <span class="noMove" *ngIf="!chosenPokemon.moves[0]; else move0">+</span>
+                            <ng-template #move0>{{formatName(chosenPokemon.moves[0].name)}} &nbsp; <span class="smallType">{{formatName(chosenPokemon.moves[0].type)}}</span></ng-template>
+                        </div>
+                    </div>
+                    <div class="col moveRight">
+                        <div class="selectedMove"
+                        (click)="chooseMoveIndex(1)"
+                        [class.selected]="selectedMoveIndex == 1">
+                            <span class="noMove" *ngIf="!chosenPokemon.moves[1]; else move1">+</span>
+                            <ng-template #move1>{{formatName(chosenPokemon.moves[1].name)}} &nbsp; <span class="smallType">{{formatName(chosenPokemon.moves[1].type)}}</span></ng-template>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col moveLeft">
+                        <div class="selectedMove"
+                        (click)="chooseMoveIndex(2)"
+                        [class.selected]="selectedMoveIndex == 2">
+                            <span class="noMove" *ngIf="!chosenPokemon.moves[2]; else move2">+</span>
+                            <ng-template #move2>{{formatName(chosenPokemon.moves[2].name)}} &nbsp; <span class="smallType">{{formatName(chosenPokemon.moves[2].type)}}</span></ng-template>
+                        </div>
+                    </div>
+                    <div class="col moveRight">
+                        <div class="selectedMove"
+                        (click)="chooseMoveIndex(3)"
+                        [class.selected]="selectedMoveIndex == 3">
+                            <span class="noMove" *ngIf="!chosenPokemon.moves[3]; else move3">+</span>
+                            <ng-template #move3>{{formatName(chosenPokemon.moves[3].name)}} &nbsp; <span class="smallType">{{formatName(chosenPokemon.moves[3].type)}}</span> </ng-template>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col justify-content-center">
+                        <button type="button" class="btn btn-primary" (click)="addToTeam()"
+                        [disabled]="!chosenPokemon.moves[0]||!chosenPokemon.moves[1]||!chosenPokemon.moves[2]||!chosenPokemon.moves[3]">Add to team</button>
+                        <span class="error" *ngIf="errorAddTeam">{{errorAddTeam}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div *ngIf="selectedMoveIndex != null">
+                Choose your moveset:
+                <div class="moveset list-group">
+                    <button type="button" class="list-group-item list-group-item-action move" *ngFor="let move of moveset; index as i"
+                       (click)="selectMove(i)"
+                        [class.active]="moveIndex[selectedMoveIndex] == i"
+                        [class.disabled]="otherMoveIndex.includes(i)"
+                        >
+                        <p><span class="moveName">{{formatName(move.name)}}</span> &nbsp; Type: {{formatName(move.type)}}
+                        </p>
+                        <p>Power:{{move.power}} &nbsp; PP:{{move.pp}} &nbsp; Acc.:{{move.accuracy}}
+                        </p>
+                        <p class="description">{{move.description}}</p>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

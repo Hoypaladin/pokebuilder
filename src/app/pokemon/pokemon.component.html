@@ -1,0 +1,15 @@
+<div class="pokemon">
+  <div class="empty" *ngIf="!pokemon; else preview">
+      ?
+  </div>
+  <ng-template #preview>
+    <div class='clickable'>
+      <img class="pokemonSprite" src={{pokemon.image}} width="45px" height="45px">
+      <span class="name"> {{pokemon.name}} </span>
+      <span class="delete"
+      *ngIf="editable"
+      (click)="delete()">&#10060;</span>
+    </div>
+  </ng-template>
+
+</div>

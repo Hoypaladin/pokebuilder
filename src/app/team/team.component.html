@@ -1,0 +1,54 @@
+<div class="team">
+  <div class="row no-gutters">
+      <div class="col">
+          <app-pokemon
+          [pokemon]="team[0]"
+          [editable]="editable"
+          (deleteEvent)="deletePokemon(0)"
+          (click)="selectPokemon(0)"></app-pokemon>
+
+      </div>
+      <div class="col">
+          <app-pokemon
+          [pokemon]="team[1]"
+          [editable]="editable"
+          (deleteEvent)="deletePokemon(1)"
+          (click)="selectPokemon(1)"></app-pokemon>
+
+      </div>
+  </div>
+    <div class="row no-gutters">
+      <div class="col">
+          <app-pokemon
+          [pokemon]="team[2]"
+          [editable]="editable"
+          (deleteEvent)="deletePokemon(2)"
+          (click)="selectPokemon(2)"></app-pokemon>
+
+      </div>
+      <div class="col">
+          <app-pokemon
+          [pokemon]="team[3]"
+          [editable]="editable"
+          (deleteEvent)="deletePokemon(3)"
+          (click)="selectPokemon(3)"></app-pokemon>
+
+      </div>
+  </div>
+    <div class="row no-gutters">
+      <div class="col">
+          <app-pokemon
+          [pokemon]="team[4]"
+          [editable]="editable"
+          (deleteEvent)="deletePokemon(4)"
+          (click)="selectPokemon(4)"></app-pokemon>
+      </div>
+      <div class="col">
+         <app-pokemon
+         [pokemon]="team[5]"
+         [editable]="editable"
+         (deleteEvent)="deletePokemon(5)"
+         (click)="selectPokemon(5)"></app-pokemon>
+
+      </div>
+  </div>
