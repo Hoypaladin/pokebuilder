@@ -23,6 +23,18 @@ export class CreateTeamComponent implements OnInit {
   otherMoveIndex: number[] = [];
   error :string =  "";
   errorAddTeam: string = "";
+  get canAddToTeam(){
+    //Sometimes, Pokemon don't have 4 moves (ditto) so we count the nb of chosen moves
+    // and see if the user added them all
+    var nbTotalMoves = this.moveset.length;
+    var nbChosenMoves = 0
+    for(let move of this.chosenPokemon.moves){
+      if(move){
+        nbChosenMoves++;
+      }
+    }
+    return (!this.chosenPokemon.moves.includes(null)|| nbChosenMoves == nbTotalMoves)
+  }
   find() : void{
     if(!this.searchName){
       this.error = "Please put a name"
