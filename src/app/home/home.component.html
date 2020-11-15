@@ -1,8 +1,14 @@
-<h2>Create new team</h2>
-<div class="newTeam" (click)="createNewTeam()">
-    +
+<div class="container">
+    <h2>Create new team</h2>
+    <div class="newTeam" (click)="createNewTeam()">
+        +
+    </div>
+    <h2>My teams</h2>
+    <div *ngFor="let team of teams; let i = index" class="teamContainer">
+        <app-team [team]="team" [editable]="false"
+        (click)="goToTeam(i)">
+        </app-team>
+    </div>
 </div>
-<h2>My teams</h2>
-<app-team class="clickable" *ngFor="let team of teams; let i = index" [team]="team" [editable]="false"
-(click)="goToTeam(i)">
-</app-team>
+
+

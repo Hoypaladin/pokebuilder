@@ -9,6 +9,9 @@ div.newTeam{
   cursor: pointer;
 }
 
-.clickable{
-  cursor: pointer;
+.teamContainer{
+    display: inline-grid;
+    cursor: pointer;
+    width: 300px;
+    margin: 30px;
 }
